@@ -33,14 +33,15 @@
   <link name="right_base_outside">
     <visual>
       <geometry>
-        <box size="0.05 0.6 0.2"/>
+        <box size="0.0254 0.4572 0.2"/>
       </geometry>
       <origin rpy="0 0 0" xyz="0.2286 0 0"/>
       <material name="white"/>
     </visual>
+
     <collision>
       <geometry>
-        <box size="0.05 0.6 0.2"/>
+        <box size="0.0254 0.4572 0.2"/>
       </geometry>
     </collision>
     <inertial>
@@ -52,14 +53,15 @@
   <link name="right_base_inside">
     <visual>
       <geometry>
-        <box size="0.05 0.6 0.2"/>
+        <box size="0.0254 0.4572 0.2"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0.1524"/>
+      <origin rpy="0 0 0" xyz="0.1524 0 0"/>
       <material name="white"/>
     </visual>
+
      <collision>
       <geometry>
-        <box size="0.05 0.6 0.2"/>
+        <box size="0.0254 0.4572 0.2"/>
       </geometry>
     </collision>
     <inertial>
@@ -71,7 +73,7 @@
   <link name="left_base_outside">
     <visual>
       <geometry>
-        <box size="0.05 0.6 0.2"/>
+        <box size="0.0254 0.4572 0.2"/>
       </geometry>
       <origin rpy="0 0 0" xyz="-0.2286 0 0"/>
       <material name="white"/>
@@ -79,7 +81,7 @@
 
     <collision>
       <geometry>
-        <box size="0.05 0.6 0.2"/>
+        <box size="0.0254 0.4572 0.2"/>
       </geometry>
     </collision>
     <inertial>
@@ -88,6 +90,25 @@
     </inertial>
   </link>
 
+  <link name="left_base_inside">
+    <visual>
+      <geometry>
+        <box size="0.0254 0.4572 0.2"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="-0.1524 0 0"/>
+      <material name="white"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="0.0254 0.4572 0.2"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
+  </link>
 
   <link name="camera_link">
     <visual>
@@ -117,10 +138,22 @@
     <origin xyz="0.2286 0 0"/>
   </joint>
 
+  <joint name="base_link_to_right_base_inside" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_base_inside"/>
+    <origin xyz="0.1524 0 0"/>
+  </joint>
+
   <joint name="base_link_to_left_base_outside" type="fixed">
     <parent link="base_link"/>
     <child link="left_base_outside"/>
     <origin xyz="-0.2286 0 0"/>
+  </joint>
+
+  <joint name="base_link_to_left_base_inside" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_base_inside"/>
+    <origin xyz="-0.1524 0 0"/>
   </joint>
 
   <joint name="base_link_to_camera" type="fixed">
