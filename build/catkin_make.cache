@@ -1,0 +1,2 @@
+gazeboSimulation:realsense/realsense-ros/realsense2_camera:realsense/realsense-ros/realsense2_description:testbot_description
+-DCATKIN_DEVEL_PREFIX=/home/dev/catkin_ws2/devel -DCMAKE_INSTALL_PREFIX=/home/dev/catkin_ws2/install -G Unix Makefiles
