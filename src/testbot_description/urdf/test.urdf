@@ -78,7 +78,7 @@
   </link>
   <joint name="right_back_wheel_joint" type="fixed">
     <parent link="right_base"/>
-    <child link="right_back_wheel"/>
+    <child link="right_b0254ack_wheel"/>
     <origin rpy="0 0 0" xyz="-0.133333333333 0 -0.085"/>
   </joint>
 
