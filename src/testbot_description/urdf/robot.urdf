@@ -96,7 +96,7 @@
       <geometry>
         <cylinder radius="0.1524" length="0.0254"/>
       </geometry>
-      <axis rpy="0 0 0" xyz="0 1 0"/>
+      <axis rpy="1 0 0" xyz="0 0 0"/>
       <origin rpy="1.57075 1.57075 0" xyz="0 0 0"/>
       <material name="black"/>
     </visual>
@@ -138,10 +138,10 @@
   </joint>
 
   <joint name="base_link_to_left_front_wheel" type="continuous">
-    <axis rpy="0 0 0" xyz="0 1 0"/>
     <parent link="base_link"/>
     <child link="left_front_wheel"/>
     <origin rpy="1.57075 1.57075 0" xyz="0.1905 0.2286 0.1524"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
   </joint>
 
   <joint name="base_link_to_left_back_wheel" type="continuous">
