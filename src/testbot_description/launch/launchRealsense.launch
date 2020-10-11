@@ -1,0 +1,19 @@
+<launch>
+
+  <node name="map_server" pkg="map_server" type="map_server" args="/home/dev/catkin_ws2/src/testbot_description/maps/maphouse.yaml"/>
+  
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch"/>
+
+  <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+    <param name="scan_height" value="3"/>
+    <param name="output_frame_id" value="base_link"/>
+    <remap from="image" to="camera/depth/image_rect_color" />
+  </node>
+
+  <node pkg="gmapping" type="slam_gmapping" name="gmapping_node" output="screen" >
+    <remap from="odom" to="your/odom/topic" />
+    <remap from="odom" to="your/odom/topic" />
+  </node>
+  
+
+</launch>11
