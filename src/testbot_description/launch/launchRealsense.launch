@@ -11,7 +11,7 @@
   </node>
 
   <node pkg="gmapping" type="slam_gmapping" name="gmapping_node" output="screen" >
-    <remap from="odom" to="your/odom/topic" />
+    <!--remap from="odom" to="your/odom/topic" /-->
     <remap from="odom" to="your/odom/topic" />
   </node>
   
