@@ -1,2 +1,2 @@
-gazeboSimulation:mybot_ws/src/mybot_control:mybot_ws/src/mybot_description:mybot_ws/src/mybot_gazebo:mybot_ws/src/mybot_navigation:realsense/realsense-ros/realsense2_camera:realsense/realsense-ros/realsense2_description:testbot_description
+gazeboSimulation:mybot_ws/src/mybot_control:mybot_ws/src/mybot_description:mybot_ws/src/mybot_gazebo:mybot_ws/src/mybot_navigation:realsense/realsense-ros/realsense2_camera:realsense/realsense-ros/realsense2_description:rplidar_ros:testbot_description
 -DCATKIN_DEVEL_PREFIX=/home/dev/catkin_ws2/devel -DCMAKE_INSTALL_PREFIX=/home/dev/catkin_ws2/install -G Unix Makefiles
