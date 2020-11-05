@@ -1,0 +1,35 @@
+<launch>
+  
+  <arg name="map_file" default="/home/dev/catkin_ws2/src/testbot_description/maps/maphouse.yaml"/>
+  <!-- Run the map server -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <arg name="model" default="$(find testbot_description)/urdf/robot.urdf"/>
+  <arg name="gui" default="true" />
+  <arg name="rvizconfig" default="$(find urdf_tutorial)/rviz/urdf.rviz" />
+
+  <!--param name="robot_description" command="$(find xacro)/xacro inorder $(arg model)" /-->
+
+  <param name="my_robot_description" textfile="$(find testbot_description)/urdf/robot.urdf"/>
+  <param name="use_gui" value="$(arg gui)"/>
+
+  <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+    <remap from="robot_description" to="my_robot_description" />
+    <remap from="joint_states" to="different_joint_states" />
+  </node>
+
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch"/>
+
+  <node pkg="depthimage_to_laserscan" type="depthimage_to_laserscan" name="depthimage_to_laserscan">
+    <param name="scan_height" value="10"/>
+    <param name="range_min" value="0.1"/>
+    <param name="output_frame_id" value="base_link"/>
+    <remap from="image" to="/camera/depth/image_rect_raw" />
+  </node>
+
+  <!-- Maping Node -->
+  <!--node pkg="gmapping" type="slam_gmapping" name="gmapping_node" output="screen" >
+    <remap from="odom" to="your/odom/topic" />
+  </node-->
+  
+</launch>
