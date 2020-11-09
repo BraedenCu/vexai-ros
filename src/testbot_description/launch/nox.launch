@@ -1,0 +1,32 @@
+<launch>
+				<!--  ************** Odometry ***************  -->
+	<arg name="gui" default="True" />
+	<param name="/use_sim_time" value="false"/>
+	<param name="use_gui" value="$(arg gui)"/>
+	<param name="robot_description" command="cat $(find testbot_description)/urdf/nox.urdf" />
+
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	
+	<!--node name="serial_node" pkg="rosserial_python" type="serial_node.py">
+		<!make sure that the PORT IS CORRECT!!!!>
+		<param name="port" value="/dev/ttyACM1"/>
+	</node-->
+		
+	<node name="nox_controller" pkg="nox" type="nox_controller">
+		<param name="publish_tf" value="true" />
+    		<param name="publish_rate" value="10.0" />
+    		<param name="linear_scale_positive" value="1.025" />
+    		<param name="linear_scale_negative" value="1.025" />
+    		<param name="angular_scale_negative" value="1.078" />
+		<param name="angular_sar_scale_positive" value="1.078" />
+    		<param name="angulcale_accel" value="0.0" />
+	</node>	
+	
+    <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find testbot_description)/maps/maphouse.yaml"/>
+
+
+</launch>
