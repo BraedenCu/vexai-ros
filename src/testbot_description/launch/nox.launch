@@ -26,6 +26,8 @@
 	
     <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
 
+	<include file="$(find testbot_description)/launch/navigationconfig.launch"/>
+	
     <node name="map_server" pkg="map_server" type="map_server" args="$(find testbot_description)/maps/maphouse.yaml"/>
 
 

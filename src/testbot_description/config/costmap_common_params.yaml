@@ -5,7 +5,7 @@ footprint: [ [0.2, 0.2], [-0.2, 0.2], [-0.2, -0.2], [0.2, -0.2] ]
 #robot_radius: 0.5 # distance a circular robot should be clear of the obstacle
 inflation_radius: 3.0
 
-observation_sources: point_cloud_sensor
+observation_sources: laser_scan_sensor
 
 # marking - add obstacle information to cost map
 # clearing - clear obstacle information to cost map
