@@ -5,6 +5,8 @@
 	<param name="use_gui" value="$(arg gui)"/>
 	<param name="robot_description" command="cat $(find testbot_description)/urdf/nox.urdf" />
 
+	<include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+	
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 	
 	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
@@ -23,12 +25,7 @@
 		<param name="angular_sar_scale_positive" value="1.078" />
     		<param name="angulcale_accel" value="0.0" />
 	</node>	
-	
-    <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
 
-	<include file="$(find testbot_description)/launch/navigationconfig.launch"/>
-	
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find testbot_description)/maps/maphouse.yaml"/>
-
+	<!--include file="$(find testbot_description)/launch/navigationconfig.launch"/-->
 
 </launch>

@@ -406,7 +406,7 @@ gtest_main_LIB_DEPENDS:STATIC=general;-lpthread;general;gtest;
 image_transport_DIR:PATH=/opt/ros/melodic/share/image_transport/cmake
 
 //Path to a library.
-lib:FILEPATH=/opt/ros/melodic/lib/libxmlrpcpp.so
+lib:FILEPATH=/opt/ros/melodic/lib/libtf2.so
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/melodic/share/message_filters/cmake
@@ -444,6 +444,12 @@ mybot_navigation_SOURCE_DIR:STATIC=/home/dev/catkin_ws2/src/mybot_ws/src/mybot_n
 //The directory containing a CMake configuration file for nav_msgs.
 nav_msgs_DIR:PATH=/opt/ros/melodic/share/nav_msgs/cmake
 
+//Value Computed by CMake
+newestTfTest_BINARY_DIR:STATIC=/home/dev/catkin_ws2/build/newestTfTest
+
+//Value Computed by CMake
+newestTfTest_SOURCE_DIR:STATIC=/home/dev/catkin_ws2/src/newestTfTest
+
 //The directory containing a CMake configuration file for nodelet.
 nodelet_DIR:PATH=/opt/ros/melodic/share/nodelet/cmake
 
@@ -467,6 +473,9 @@ realsense2_description_BINARY_DIR:STATIC=/home/dev/catkin_ws2/build/realsense/re
 
 //Value Computed by CMake
 realsense2_description_SOURCE_DIR:STATIC=/home/dev/catkin_ws2/src/realsense/realsense-ros/realsense2_description
+
+//The directory containing a CMake configuration file for robot_setup_tf.
+robot_setup_tf_DIR:PATH=robot_setup_tf_DIR-NOTFOUND
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/melodic/share/rosconsole/cmake
@@ -511,10 +520,10 @@ rplidar_ros_SOURCE_DIR:STATIC=/home/dev/catkin_ws2/src/rplidar_ros
 sensor_msgs_DIR:PATH=/opt/ros/melodic/share/sensor_msgs/cmake
 
 //Value Computed by CMake
-simulation_BINARY_DIR:STATIC=/home/dev/catkin_ws2/build/gazeboSimulation
+simulation_BINARY_DIR:STATIC=/home/dev/catkin_ws2/build/simulation
 
 //Value Computed by CMake
-simulation_SOURCE_DIR:STATIC=/home/dev/catkin_ws2/src/gazeboSimulation
+simulation_SOURCE_DIR:STATIC=/home/dev/catkin_ws2/src/simulation
 
 //The directory containing a CMake configuration file for smclib.
 smclib_DIR:PATH=/opt/ros/melodic/share/smclib/cmake
@@ -665,7 +674,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=13
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=14
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

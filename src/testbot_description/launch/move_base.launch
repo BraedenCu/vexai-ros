@@ -1,18 +1,29 @@
 <launch>
+				<!--  ************** Odometry ***************  -->
+	<arg name="gui" default="True" />
+	<param name="/use_sim_time" value="false"/>
+	<param name="use_gui" value="$(arg gui)"/>
+	<param name="robot_description" command="cat $(find testbot_description)/urdf/robot.urdf" />
 
-   <master auto="start"/>
- <!-- Run the map server --> 
-    <node name="map_server" pkg="map_server" type="map_server" args="$(find my_map_package)/my_map.pgm my_map_resolution"/>
+	<include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+	
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+	
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+	
+		
+	<!--node name="nox_controller" pkg="testbot_description" type="nox">
+		<param name="publish_tf" value="true" />
+    		<param name="publish_rate" value="10.0" />
+    		<param name="linear_scale_positive" value="1.025" />
+    		<param name="linear_scale_negative" value="1.025" />
+    		<param name="angular_scale_negative" value="1.078" />
+		<param name="angular_sar_scale_positive" value="1.078" />
+    		<param name="angulcale_accel" value="0.0" />
+	</node-->	
 
- <!--- Run AMCL --> 
-    <include file="$(find amcl)/examples/amcl_omni.launch" />
+	<node name="transforms" pkg="testbot_description" type="transforms"/>
 
-   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find my_robot_name_2dnav)/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
-    <rosparam file="$(find my_robot_name_2dnav)/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find my_robot_name_2dnav)/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find my_robot_name_2dnav)/global_costmap_params.yaml" command="load" /> 
-    <rosparam file="$(find my_robot_name_2dnav)/base_local_planner_params.yaml" command="load" />
- </node>
+	<!--include file="$(find testbot_description)/launch/navigationconfig.launch"/-->
 
-</launch> 
+</launch>

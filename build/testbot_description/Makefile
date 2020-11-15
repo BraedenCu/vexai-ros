@@ -56,6 +56,18 @@ CMAKE_BINARY_DIR = /home/dev/catkin_ws2/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -100,18 +112,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -168,6 +168,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+testbot_description/CMakeFiles/testbot_description.dir/rule:
+	cd /home/dev/catkin_ws2/build && $(MAKE) -f CMakeFiles/Makefile2 testbot_description/CMakeFiles/testbot_description.dir/rule
+.PHONY : testbot_description/CMakeFiles/testbot_description.dir/rule
+
+# Convenience name for target.
+testbot_description: testbot_description/CMakeFiles/testbot_description.dir/rule
+
+.PHONY : testbot_description
+
+# fast build rule for target.
+testbot_description/fast:
+	cd /home/dev/catkin_ws2/build && $(MAKE) -f testbot_description/CMakeFiles/testbot_description.dir/build.make testbot_description/CMakeFiles/testbot_description.dir/build
+.PHONY : testbot_description/fast
+
+# Convenience name for target.
 testbot_description/CMakeFiles/parser.dir/rule:
 	cd /home/dev/catkin_ws2/build && $(MAKE) -f CMakeFiles/Makefile2 testbot_description/CMakeFiles/parser.dir/rule
 .PHONY : testbot_description/CMakeFiles/parser.dir/rule
@@ -209,23 +224,54 @@ src/parser.cpp.s:
 	cd /home/dev/catkin_ws2/build && $(MAKE) -f testbot_description/CMakeFiles/parser.dir/build.make testbot_description/CMakeFiles/parser.dir/src/parser.cpp.s
 .PHONY : src/parser.cpp.s
 
+src/transforms.o: src/transforms.cpp.o
+
+.PHONY : src/transforms.o
+
+# target to build an object file
+src/transforms.cpp.o:
+	cd /home/dev/catkin_ws2/build && $(MAKE) -f testbot_description/CMakeFiles/testbot_description.dir/build.make testbot_description/CMakeFiles/testbot_description.dir/src/transforms.cpp.o
+.PHONY : src/transforms.cpp.o
+
+src/transforms.i: src/transforms.cpp.i
+
+.PHONY : src/transforms.i
+
+# target to preprocess a source file
+src/transforms.cpp.i:
+	cd /home/dev/catkin_ws2/build && $(MAKE) -f testbot_description/CMakeFiles/testbot_description.dir/build.make testbot_description/CMakeFiles/testbot_description.dir/src/transforms.cpp.i
+.PHONY : src/transforms.cpp.i
+
+src/transforms.s: src/transforms.cpp.s
+
+.PHONY : src/transforms.s
+
+# target to generate assembly for a file
+src/transforms.cpp.s:
+	cd /home/dev/catkin_ws2/build && $(MAKE) -f testbot_description/CMakeFiles/testbot_description.dir/build.make testbot_description/CMakeFiles/testbot_description.dir/src/transforms.cpp.s
+.PHONY : src/transforms.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install"
 	@echo "... install/strip"
+	@echo "... testbot_description"
+	@echo "... parser"
 	@echo "... install/local"
 	@echo "... test"
 	@echo "... list_install_components"
-	@echo "... parser"
-	@echo "... install"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... src/parser.o"
 	@echo "... src/parser.i"
 	@echo "... src/parser.s"
+	@echo "... src/transforms.o"
+	@echo "... src/transforms.i"
+	@echo "... src/transforms.s"
 .PHONY : help
 
 

@@ -9,6 +9,9 @@ project(testbot_description)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   urdf
+  roscpp
+  tf 
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -204,4 +207,6 @@ include_directories(
 # catkin_add_nosetests(test)
 
 add_executable(parser src/parser.cpp)
+add_executable(testbot_description src/transforms.cpp)
 target_link_libraries(parser ${catkin_LIBRARIES})
+target_link_libraries(testbot_description ${catkin_LIBRARIES})
